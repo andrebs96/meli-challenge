@@ -13,7 +13,7 @@ const Base = ({ children }) => {
   return (
     <S.Wrapper>
       <Header onSubmit={onSubmit} />
-      {children}
+      <S.Content>{children}</S.Content>
       <Footer />
     </S.Wrapper>
   )
