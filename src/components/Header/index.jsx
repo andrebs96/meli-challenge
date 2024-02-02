@@ -7,10 +7,12 @@ import * as S from './styles'
 import Logo from 'components/Logo'
 import Search from 'components/Search'
 
+import ROUTES from 'utils/routes'
+
 const Header = ({ onSubmit }) => (
   <S.Wrapper>
     <S.Container>
-      <Link to="/">
+      <Link to={ROUTES.HOME}>
         <Logo />
       </Link>
       <Search onSubmit={onSubmit} />
