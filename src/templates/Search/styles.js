@@ -22,13 +22,13 @@ export const Items = styled.div`
 `
 
 export const Item = styled.div`
-  border-radius: 6px;
+  border-radius: 0.6rem;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 -1px 2px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
   margin-bottom: 1.6rem;
 
   img {
-    border-radius: 6px;
+    border-radius: 0.6rem;
     width: 100%;
     height: auto;
   }
