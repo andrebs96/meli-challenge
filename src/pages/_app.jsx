@@ -4,6 +4,7 @@ import Routes from 'routes'
 
 import theme from 'styles/theme'
 import GlobalStyles from 'styles/global'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function App() {
   return (

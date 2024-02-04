@@ -1,4 +1,6 @@
 import React from 'react'
+import Skeleton from 'react-loading-skeleton'
+import { Link } from 'react-router-dom'
 
 import * as S from './styles'
 
@@ -6,8 +8,27 @@ import Base from 'templates/Base'
 
 import Container from 'components/Container'
 
-const Search = ({ terms, items }) => {
-  const showEmptyContent = !terms || items.length === 0
+import { formatPriceBR } from 'utils/price/format'
+
+const Loading = () =>
+  Array.from({ length: 12 }, (v, k) => k).map((arr) => (
+    <S.Item key={arr}>
+      <S.Image>
+        <Skeleton width="90px" height="90px" />
+      </S.Image>
+      <S.ItemContent>
+        <h2>
+          <Skeleton width="100%" height="32px" />
+        </h2>
+        <S.ItemPrice>
+          <Skeleton width="100%" />
+        </S.ItemPrice>
+      </S.ItemContent>
+    </S.Item>
+  ))
+
+const Search = ({ terms, items, loading }) => {
+  const showEmptyContent = (!terms || items.length === 0) && !loading
 
   return (
     <S.Wrapper>
@@ -17,28 +38,20 @@ const Search = ({ terms, items }) => {
             <>
               <S.Title>{terms}</S.Title>
               <S.Items>
-                {items.map((item) => {
-                  if (item.status === 'active') {
-                    return (
-                      <S.Item key={item.id}>
-                        <S.Image>
-                          <img src={item.picture[0].url} />
-                        </S.Image>
-                        <S.ItemContent>
-                          <h2>{item.name}</h2>
-                          <div
-                            style={{
-                              textAlign: 'center',
-                              fontSize: '2.4rem'
-                            }}
-                          >
-                            R$ 6.006
-                          </div>
-                        </S.ItemContent>
-                      </S.Item>
-                    )
-                  }
-                })}
+                {items.map((item) => (
+                  <Link key={item.id} to={`/${item.id}/p`}>
+                    <S.Item>
+                      <S.Image>
+                        <img src={item.thumbnail} loading="lazy" />
+                      </S.Image>
+                      <S.ItemContent>
+                        <h2>{item.title}</h2>
+                        <S.ItemPrice>{formatPriceBR(item.price)}</S.ItemPrice>
+                      </S.ItemContent>
+                    </S.Item>
+                  </Link>
+                ))}
+                {loading && <Loading />}
               </S.Items>
             </>
           )}
