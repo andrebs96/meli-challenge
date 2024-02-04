@@ -13,9 +13,7 @@
     "test:watch": "yarn test --watch -o",
     "generate": "yarn plop --plopfile generators/plopfile.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "pre-install": "./.scripts/setup.sh && node ./.scripts/husky-install.js",
-    "postinstall": "rm -rf .npmrc"
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
