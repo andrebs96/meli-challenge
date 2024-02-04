@@ -1,13 +1,32 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen, act, fireEvent } from '@testing-library/react'
 
 import Search from '.'
 
-describe('<Search />', () => {
-  it('should render the heading', () => {
-    renderWithTheme(<Search />)
+const Props = {
+  onSubmit: jest.fn()
+}
 
-    expect(screen.getByRole('heading', { name: /Search/i })).toBeInTheDocument()
+describe('<Search />', () => {
+  it('should render the Search', () => {
+    render(<Search {...Props} />)
+
+    expect(screen.getByPlaceholderText(/Buscar/i)).toBeInTheDocument()
+  })
+
+  it('should trigger callback after submit', async () => {
+    render(<Search {...Props} />)
+
+    const input = screen.getByRole('textbox')
+
+    expect(input).toBeInTheDocument()
+
+    act(() => {
+      fireEvent.change(input, { target: { value: 'macbook' } })
+    })
+
+    await fireEvent.submit(screen.getByRole('button'))
+
+    expect(Props.onSubmit).toHaveBeenCalled()
   })
 })

@@ -8,7 +8,7 @@ const Search = ({ onSubmit }) => (
   <S.Wrapper
     onSubmit={(e) => {
       e.preventDefault()
-      onSubmit(e.target[0].value)
+      onSubmit(e.target[0]?.value)
     }}
   >
     <input

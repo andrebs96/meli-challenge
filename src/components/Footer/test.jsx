@@ -1,13 +1,12 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen } from '@testing-library/react'
 
 import Footer from '.'
 
 describe('<Footer />', () => {
-  it('should render the heading', () => {
-    renderWithTheme(<Footer />)
+  it('should render the Footer', () => {
+    render(<Footer />)
 
-    expect(screen.getByRole('heading', { name: /Footer/i })).toBeInTheDocument()
+    expect(screen.getByText(/Copyright/i)).toBeInTheDocument()
   })
 })

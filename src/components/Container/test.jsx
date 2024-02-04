@@ -1,15 +1,18 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen } from '@testing-library/react'
 
 import Container from '.'
 
 describe('<Container />', () => {
-  it('should render the heading', () => {
-    renderWithTheme(<Container />)
+  it('should render the Container', () => {
+    const { container } = render(
+      <Container>
+        <span>Container Test</span>
+      </Container>
+    )
 
-    expect(
-      screen.getByRole('heading', { name: /Container/i })
-    ).toBeInTheDocument()
+    expect(screen.getByText(/Container Test/i)).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

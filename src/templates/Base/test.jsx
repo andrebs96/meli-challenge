@@ -1,13 +1,41 @@
 import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
+import { render, screen } from '@testing-library/react'
+import { createMemoryHistory } from 'history'
+import { Router } from 'react-router-dom'
 
 import Base from '.'
 
-describe('<Base />', () => {
-  it('should render the heading', () => {
-    renderWithTheme(<Base />)
+jest.mock('components/Logo', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Header"></div>
+    }
+  }
+})
 
-    expect(screen.getByRole('heading', { name: /Base/i })).toBeInTheDocument()
+jest.mock('components/Footer', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Footer"></div>
+    }
+  }
+})
+
+describe('<Base />', () => {
+  it('should render the Base', () => {
+    const history = createMemoryHistory()
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <Base>Base Test</Base>
+      </Router>
+    )
+
+    expect(screen.getByTestId('Mock Header')).toBeInTheDocument()
+    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument()
+
+    expect(screen.getByText(/Base Test/i)).toBeInTheDocument()
   })
 })

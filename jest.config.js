@@ -19,6 +19,7 @@ module.exports = {
     '\\.svg$': '<rootDir>/.jest/svgrMock.js',
     '\\.gif$': '<rootDir>/.jest/svgrMock.js',
     '\\.png$': '<rootDir>/.jest/fileMock.js',
+    '\\.webp$': '<rootDir>/.jest/fileMock.js',
     '\\.css$': '<rootDir>/.jest/styleMock.js'
   },
   setupFilesAfterEnv: [

@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -14,19 +14,14 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
-  ${({ theme }) => css`
-    html {
-      font-size: 62.5%;
-      height: 100%;
-    }
+  html {
+    font-size: 62.5%;
+    height: 100%;
+  }
 
-    body {
-      font-family: ${theme.font.family.base};
-      font-size: ${theme.font.sizes.medium};
-      font-weight: ${theme.font.regular};
-      height: inherit;
-    }
-  `}
+  body {
+    font-family: Open Sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  }
 `
 
 export default GlobalStyles
