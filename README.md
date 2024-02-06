@@ -106,6 +106,6 @@ Puede obtener ayuda [aquí](https://github.com/conventional-changelog/commitlint
 * TDD e TypeScript: 
 [PT] - para ganhar agilidade na entrega tomei a decisão de não usar.
 [ES] - para acelerar el envío decidí no usarlo.
-* Paginação na tela de pesquisa:
+* [PT] - Paginação na tela de pesquisa / [ES] - Paginación en la pantalla de búsqueda.:
 [PT] - acabei perdendo muito tempo na análise do endpoint que retorna em alguns momentos items repetidos, então decidi não implementar.
 [ES] - terminé perdiendo mucho tiempo analizando el punto final que a veces devuelve elementos repetidos, así que decidí no implementarlo.
